@@ -8,7 +8,7 @@ const UsersPage = () => {
   const [filtered, setFiltered] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const { recentSearches, addRecentSearch } = useUserContext();
+  const { recentSearches, addRecentSearch, favorites } = useUserContext();
 
   const [view, setView] = useState("all");
 
@@ -30,13 +30,16 @@ const UsersPage = () => {
   // Filter users
   useEffect(() => {
     let filteredResults = []
-
+    
+    // all users/ recent-searches & favorites 
     if (view === "recent") {
       filteredResults = users.filter((user) =>
         recentSearches.some((term) =>
           user.name.toLowerCase().includes(term.toLowerCase())
         )
       )
+    } else if (view === "favorites") {
+      filteredResults = users.filter((user) => favorites.includes(user.id))
     } else if (searchTerm.trim()) {
       const lower = searchTerm.toLowerCase()
 
@@ -44,7 +47,6 @@ const UsersPage = () => {
         user.name.toLowerCase().includes(lower)
       )
 
-      // Search Term - longer than 2 characters
       if (searchTerm.trim().length > 2 && filteredResults.length > 0) {
         addRecentSearch(searchTerm)
       }
@@ -53,8 +55,7 @@ const UsersPage = () => {
     }
 
     setFiltered(filteredResults)
-  }, [searchTerm, users, view])
-
+  }, [searchTerm, users, view, favorites, recentSearches])
 
 
   return (
@@ -75,7 +76,9 @@ const UsersPage = () => {
             </button> 
           }
 
-          <button className="w-[200px] bg-[#f2f2f2] ml-4 text-gray-800 px-4 py-1 rounded mb-3">Favorites</button>
+          <button onClick={() => setView("favorites")} className="w-[200px] bg-[#f2f2f2] ml-4 text-gray-800 px-4 py-1 rounded mb-3">
+            Favorites
+          </button>
         </div>
 
         <input
