@@ -67,16 +67,16 @@ const UsersPage = () => {
           </h3>
         
           {view==="all" ?  
-            <button onClick={() => setView("recent")} className="ml-[20%] w-[200px] bg-[#f2f2f2] text-gray-800 px-4 py-1 rounded mb-3">
+            <button onClick={() => setView("recent")} className="ml-[20%] w-[200px] bg-[#e65100] text-white px-4 py-1 rounded mb-3">
               Recent Searches
             </button>
 
-          : <button onClick={() => setView("all")} className="ml-[20%] w-[200px] bg-[#f2f2f2] text-gray-800 px-4 py-1 rounded mb-3">
+          : <button onClick={() => setView("all")} className="ml-[20%] w-[200px] bg-[#e65100] text-white px-4 py-1 rounded mb-3">
               All Users
             </button> 
           }
 
-          <button onClick={() => setView("favorites")} className="w-[200px] bg-[#f2f2f2] ml-4 text-gray-800 px-4 py-1 rounded mb-3">
+          <button onClick={() => setView("favorites")} className="w-[200px] bg-[#e65100] ml-4 text-white px-4 py-1 rounded mb-3">
             Favorites
           </button>
         </div>
@@ -93,7 +93,7 @@ const UsersPage = () => {
         />
      
         {/* User cards */}
-        <div className="grid border border-[#444] p-2 rounded-md gap-6 sm:grid-cols-2 md:grid-cols-3 h-[68vh] overflow-y-scroll">
+        <div className="grid border border-[#444] p-2 rounded-md gap-6 sm:grid-cols-2 md:grid-cols-3 h-[68vh] overflow-y-scroll user-scroll">
           {filtered.map((user) => (
             <UserCard key={user.id} user={user} />
           ))}

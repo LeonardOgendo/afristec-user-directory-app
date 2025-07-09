@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react"
+import toast from "react-hot-toast";
 
 export const UserContext = createContext()
 
@@ -27,12 +28,14 @@ export const UserProvider = ({ children }) => {
 
 
   const toggleFavorite = (userId) => {
+    const isFavorite = favorites.includes(userId);
+
     setFavorites((prev) =>
-      prev.includes(userId)
-        ? prev.filter((id) => id !== userId)
-        : [...prev, userId]
-    )
-  }
+      isFavorite ? prev.filter((id) => id !== userId) : [...prev, userId]
+    );
+
+    toast.success(isFavorite ? "Removed from favorites" : "Added to favorites");
+  };
 
   const addRecentSearch = (term) => {
     const trimmed = term.trim().toLowerCase()
