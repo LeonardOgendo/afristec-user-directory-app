@@ -19,10 +19,10 @@ const AppLayout = () => {
                     <div className="h-[3px] w-[200px] rounded bg-[#e65100]"></div>
 
                     <div className="flex items-center">
-                        <button onClick={toggleTheme} className="text-white mr-3">
-                            { theme === "dark" ? <RiSunLine /> : <FaMoon />}
+                        <button onClick={toggleTheme} className="text-[#fff8e7] mr-3">
+                            { theme === "dark" ? <RiSunLine className='text-[1.2rem]' /> : <FaMoon />}
                         </button>
-                         <FaLaptopCode className="text-gray-400 text-lg animate-spin" />
+                         <FaLaptopCode className="text-[#fff8e7] text-lg animate-spin" />
                     </div>
                 </div>
             </nav>
@@ -30,9 +30,6 @@ const AppLayout = () => {
             <div className="flex-grow w-[85%] mx-auto">
                 <Outlet />
             </div>
-            <footer className="w-[85%] mx-auto p-4 text-white text-center">
-                <p>Powered By React</p>
-            </footer>
         </div>
     );
 };
