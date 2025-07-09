@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import { getUsers } from "./userApi";
+import { useUserContext } from "./userContext";
 import UserCard from "./components/UserCard";
 
 const UsersPage = () => {
-  const [users, setUsers] = useState([])
-  const [filtered, setFiltered] = useState([])
-  const [searchTerm, setSearchTerm] = useState("")
+  const [users, setUsers] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const { recentSearches, addRecentSearch } = useUserContext();
+
+  const [view, setView] = useState("all");
 
   // Fetch users
   useEffect(() => {
@@ -20,34 +25,72 @@ const UsersPage = () => {
     }
 
     fetchUsers()
-  }, [])
+  }, []);
 
   // Filter users
   useEffect(() => {
-    const lower = searchTerm.toLowerCase()
-    const results = users.filter((user) =>
-      user.name.toLowerCase().includes(lower)
-    )
-    setFiltered(results)
-  }, [searchTerm, users])
+    let filteredResults = []
+
+    if (view === "recent") {
+      filteredResults = users.filter((user) =>
+        recentSearches.some((term) =>
+          user.name.toLowerCase().includes(term.toLowerCase())
+        )
+      )
+    } else if (searchTerm.trim()) {
+      const lower = searchTerm.toLowerCase()
+
+      filteredResults = users.filter((user) =>
+        user.name.toLowerCase().includes(lower)
+      )
+
+      // Search Term - longer than 2 characters
+      if (searchTerm.trim().length > 2 && filteredResults.length > 0) {
+        addRecentSearch(searchTerm)
+      }
+    } else {
+      filteredResults = users
+    }
+
+    setFiltered(filteredResults)
+  }, [searchTerm, users, view])
+
+
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 px-4 py-8">
-      <div className="max-w-5xl mx-auto">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-          User Directory
-        </h1>
+    <div className="min-h-screen py-8">
+      <div className="mx-auto">
+        <div className="flex items-center">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6">
+            Users Directory
+          </h3>
+        
+          {view==="all" ?  
+            <button onClick={() => setView("recent")} className="ml-[20%] w-[200px] bg-[#f2f2f2] text-gray-800 px-4 py-1 rounded mb-3">
+              Recent Searches
+            </button>
+
+          : <button onClick={() => setView("all")} className="ml-[20%] w-[200px] bg-[#f2f2f2] text-gray-800 px-4 py-1 rounded mb-3">
+              All Users
+            </button> 
+          }
+
+          <button className="w-[200px] bg-[#f2f2f2] ml-4 text-gray-800 px-4 py-1 rounded mb-3">Favorites</button>
+        </div>
 
         <input
           type="text"
-          placeholder="Search users by name..."
+          placeholder="Search by name..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full md:w-1/2 px-4 py-2 mb-6 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-800 dark:text-white"
-        />
+          onChange={(e) => {
+            setSearchTerm(e.target.value)
+          }}
 
+          className="w-[200px] text-[0.9rem]  px-4 py-1 mb-6 rounded border border-[#444] focus:outline-none  dark:text-white"
+        />
+     
         {/* User cards */}
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid border border-[#444] p-2 rounded-md gap-6 sm:grid-cols-2 md:grid-cols-3 h-[68vh] overflow-y-scroll">
           {filtered.map((user) => (
             <UserCard key={user.id} user={user} />
           ))}
