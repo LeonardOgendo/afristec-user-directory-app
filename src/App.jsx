@@ -1,9 +1,8 @@
-import { createRoot } from "react-dom/client";
-import App from "./App";
+import { RouterProvider } from "react-router-dom"
+import router from "./app/router";
 
-const container = document.getElementById("root");
-const root = createRoot(container);
+const App = () => {
+    return <RouterProvider router={router}></RouterProvider>
+}
 
-root.render(
-    <App />
-);
+export default App

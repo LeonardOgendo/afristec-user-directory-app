@@ -1,7 +1,10 @@
-import { RouterProvider } from "react-router-dom"
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import "./styles/styles.css";
 
-const App = () => {
-    return <RouterProvider router={router}></RouterProvider>
-}
+const container = document.getElementById("root");
+const root = createRoot(container);
 
-export default App
+root.render(
+    <App />
+);
