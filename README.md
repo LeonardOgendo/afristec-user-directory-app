@@ -8,19 +8,19 @@ A modern, single-page **User Directory** built with **React.js**, featuring real
 
 ### 🚀 Features
 
-- 🔍 **Search Users in Real-Time**  
+- **Search Users in Real-Time**  
   Fetches users from a public API and filters them as you type (case-insensitive).
   
-- 🌗 **Dark/Light Theme Toggle**  
+- **Dark/Light Theme Toggle**  
   Simple UI switcher powered by React Context.
 
-- ⭐ **Mark Favorites**  
+- **Mark Favorites**  
   Toggle favorite status per user and persist it in `localStorage`.
 
-- 🕑 **Recent Searches**  
+- **Recent Searches**  
   Automatically stores your 5 latest search terms for easy recall.
 
-- ⚡ **Responsive UI**  
+- **Responsive UI**  
   Tailwind CSS-powered layout that works great on mobile and desktop.
 
 ---
