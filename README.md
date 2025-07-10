@@ -35,7 +35,7 @@ src/
 │   ├── context/
 │   │   └── themeContext.jsx         # Theme context logic and provider
 │   ├── layout/
-│   │   └── AppLayout.jsx            # Shared layout structure (navbar, footer, etc.)
+│   │   └── AppLayout.jsx            # Shared layout structure
 │   └── router.jsx                   # React Router configuration
 │
 ├── features/
@@ -49,8 +49,8 @@ src/
 ├── styles/
 │   └── styles.css                   # Global Tailwind CSS and custom styles
 │
-├── App.jsx                          # Root app component
-├── main.jsx                         # Entry point, renders App with context providers
+├── App.jsx                          
+├── main.jsx                         
 ```
 
 
