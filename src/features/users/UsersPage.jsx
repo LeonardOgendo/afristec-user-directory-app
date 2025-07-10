@@ -63,22 +63,22 @@ const UsersPage = () => {
   return (
     <div className="min-h-screen py-8">
       <div className="mx-auto">
-        <div className="flex items-center">
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6">
+        <div className="flex flex-wrap sm:flex-nowrap sm:items-center gap-1">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 w-full sm:w-auto sm:mr-0">
             Users Directory
           </h3>
-        
+          
           {view==="all" ?  
-            <button onClick={() => setView("recent")} className="ml-[20%] w-[200px] bg-[#e65100] text-white flex items-center px-4 py-[5px] rounded mb-3 hover:bg-[#cc4b00] cursor-pointer">
+            <button onClick={() => setView("recent")} className="sm:ml-[20%] w-[1/2] sm:w-[200px] bg-[#e65100] text-white flex items-center px-4 py-[5px] rounded mb-3 hover:bg-[#cc4b00] cursor-pointer">
               <FaHistory className="mr-2" /> Recent Searches
             </button>
 
-          : <button onClick={() => setView("all")} className="ml-[20%] w-[200px] bg-[#e65100] text-white flex items-center px-4 py-[5px] rounded mb-3 hover:bg-[#cc4b00] cursor-pointer">
+          : <button onClick={() => setView("all")} className="sm:ml-[20%] w-[1/2] sm:w-[200px] bg-[#e65100] text-white flex items-center px-4 py-[5px] rounded mb-3 hover:bg-[#cc4b00] cursor-pointer">
               <FaHistory className="mr-2" /> All Users
             </button> 
           }
 
-          <button onClick={() => setView("favorites")} className="w-[200px] bg-[#e65100] ml-4 text-white flex items-center px-4 py-[5px] rounded mb-3 hover:bg-[#cc4b00] cursor-pointer">
+          <button onClick={() => setView("favorites")} className="w-[1/2] sm:w-[200px] bg-[#e65100] ml-4 text-white flex items-center px-4 py-[5px] rounded mb-3 hover:bg-[#cc4b00] cursor-pointer">
             <FaStar className="mr-2" /> Favorites
           </button>
         </div>
@@ -91,7 +91,7 @@ const UsersPage = () => {
             setSearchTerm(e.target.value)
           }}
 
-          className="w-[200px] text-[0.9rem]  px-4 py-1 mb-6 rounded border border-[#444] focus:outline-none  dark:text-white"
+          className="w-[200px] text-[0.9rem] mt-4 sm:mt-0 px-4 py-1 mb-6 rounded border border-[#444] focus:outline-none  dark:text-white"
         />
      
         {/* User cards */}
