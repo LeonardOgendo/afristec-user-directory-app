@@ -19,7 +19,7 @@ const AppLayout = () => {
                     <div className="h-[3px] w-[200px] rounded bg-[#e65100]"></div>
 
                     <div className="flex items-center">
-                        <button onClick={toggleTheme} className="text-[#fff8e7] mr-3">
+                        <button onClick={toggleTheme} className="text-[#fff8e7] mr-3 hover:text-[#e65100]">
                             { theme === "dark" ? <RiSunLine className='text-[1.2rem]' /> : <FaMoon />}
                         </button>
                          <FaLaptopCode className="text-[#fff8e7] text-lg animate-spin" />

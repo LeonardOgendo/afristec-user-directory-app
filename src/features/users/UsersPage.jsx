@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { FaHistory, FaStar } from 'react-icons/fa';
+
 import { getUsers } from "./userApi";
 import { useUserContext } from "./userContext";
 import UserCard from "./components/UserCard";
@@ -67,17 +69,17 @@ const UsersPage = () => {
           </h3>
         
           {view==="all" ?  
-            <button onClick={() => setView("recent")} className="ml-[20%] w-[200px] bg-[#e65100] text-white px-4 py-1 rounded mb-3">
-              Recent Searches
+            <button onClick={() => setView("recent")} className="ml-[20%] w-[200px] bg-[#e65100] text-white flex items-center px-4 py-[5px] rounded mb-3 hover:bg-[#cc4b00] cursor-pointer">
+              <FaHistory className="mr-2" /> Recent Searches
             </button>
 
-          : <button onClick={() => setView("all")} className="ml-[20%] w-[200px] bg-[#e65100] text-white px-4 py-1 rounded mb-3">
-              All Users
+          : <button onClick={() => setView("all")} className="ml-[20%] w-[200px] bg-[#e65100] text-white flex items-center px-4 py-[5px] rounded mb-3 hover:bg-[#cc4b00] cursor-pointer">
+              <FaHistory className="mr-2" /> All Users
             </button> 
           }
 
-          <button onClick={() => setView("favorites")} className="w-[200px] bg-[#e65100] ml-4 text-white px-4 py-1 rounded mb-3">
-            Favorites
+          <button onClick={() => setView("favorites")} className="w-[200px] bg-[#e65100] ml-4 text-white flex items-center px-4 py-[5px] rounded mb-3 hover:bg-[#cc4b00] cursor-pointer">
+            <FaStar className="mr-2" /> Favorites
           </button>
         </div>
 

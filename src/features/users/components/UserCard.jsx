@@ -9,7 +9,7 @@ const UserCard = ({ user }) => {
   const { theme } = useTheme();
 
   return (
-    <div className={`${theme === "dark" ? "bg-[#1c1c1c]" : "bg-white dark:bg-gray-800"} text-white shadow-md rounded-xl p-6 transition hover:shadow-lg flex flex-col items-center`}>
+    <div className={`${theme === "dark" ? "bg-[#1c1c1c]" : "bg-white dark:bg-gray-800"} text-white shadow-md rounded-xl p-6 transition ${theme === "dark" ? "hover:bg-[#222]" : "hover:bg-gray-700"} flex flex-col items-center `}>
       
       {/* Avatar */}
       <FaUserCircle className="text-7xl text-[#fff8e7] mb-4" />
