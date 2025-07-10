@@ -1,0 +1,15 @@
+If this app were to consume a Spring Boot backend instead of the public API, here’s how I would approach it:
+
+1. Update the API Endpoint  
+Replace the current fetch URL in `features/users/userApi.js`:
+From:  
+  https://jsonplaceholder.typicode.com/users  
+To:  
+  https://api.afristec.com/api/users  
+This assumes the Spring Boot backend exposes a `/api/users` endpoint.
+
+2. Handle CORS  
+Ensure the Spring Boot backend allows cross-origin requests from the frontend (http://localhost:5173) to prevent CORS-related browser errors.
+
+3.  Secure the API with JWT  
+I’d configure Spring Boot to issue and verify JWTs for secure API access since we are handling internal user data, to protect against social engineering and related authentication attacks.
